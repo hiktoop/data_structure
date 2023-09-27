@@ -1,11 +1,8 @@
-#include <iostream> 
-#include <cstdlib>
 #include <cmath>
-#include <cstring>
 #include <mutex>
+#include <cstring>
 
 std::mutex mtx;     // mutex for critical section
-const std::string delimiter = ":";
 
 //Class template to implement node
 template<typename K, typename V> 
@@ -194,8 +191,6 @@ void SkipList<K, V>::delete_element(K key) {
         while (_skip_list_level > 0 && _header->forward[_skip_list_level] == nullptr) {
             _skip_list_level --; 
         }
-
-        std::cout << "Successfully deleted key "<< key << std::endl;
         _element_count --;
     }
     mtx.unlock();
